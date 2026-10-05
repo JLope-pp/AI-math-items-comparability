@@ -59,12 +59,14 @@ The exact statement text for `p10a`-`p10h`, `p11a`-`p11d`, `p12a`-`p12h`, and `p
 | `content_alignment_teacher` / `content_alignment_expert` | Content-alignment rating (1-3 scale, teacher / specialist) | 1-3 |
 | `distractor_quality_teacher` / `distractor_quality_expert` | Distractor-quality rating (1-3 scale) | 1-3 |
 | `difficulty_level`, `item_grade_level`, `item_classroom_group` | Item-level classification codes from the original file | numeric; exact category meaning beyond what the paper describes is not documented elsewhere in the project |
-| `cognitive_demand_teachers` / `cognitive_demand_expert` / `intended_cognitive_demand` | Cognitive demand (1=Low, 2=Medium, 3=High), as rated by teachers, by the specialist, or as intended at generation time | 1-3 |
+| `cognitive_demand_teachers` / `cognitive_demand_expert` / `intended_cognitive_demand` | Cognitive demand (1=Low, 2=Medium, 3=High), as rated by teachers, by the specialist, or as intended at generation time and recorded on the review form. Each model generated 30 items with consecutive `item_id`s in three blocks of 10 (high, medium, low), and the notebook takes the intended level of each item from its block; three items (229, 256, 260) have a review-form code that differs from their block | 1-3 |
 | `content_topic_teachers` / `content_topic` | Content-topic code | Numeric code (1-7); no text label is available for these codes, so they are kept as the original numbers. |
 | `expert_answer_correct` | Whether the specialist judged the keyed answer correct | `correct`, `incorrect` |
 | `distractor_1_rationale`, `distractor_2_rationale`, `distractor_3_rationale` | The teacher/specialist's rationale for why each incorrect option is a plausible distractor (translated to English) | free text |
 | `teacher_comments`, `expert_comments` | Free-text review comments (translated to English) | free text |
 
-## Two settings not derived from this data
+## Information not derived from this data
 
-Table A1 in the notebook lists two generation-pipeline settings that are properties of how Eval-IA was configured, not something the review or response data can measure: the 0.90 semantic-similarity threshold used during item generation, and the use of 20 reference items as generation context. Both come from Eval-IA's own technical report (AISIDE) and the paper's Methods section rather than being computed here.
+Table A1 in the notebook includes three settings of the Eval-IA generation tool that the review or response data cannot measure: the use of 20 reference items as generation context, the 0.90 semantic-similarity threshold used during generation, and the software implementation. They come from Eval-IA's technical report (AISIDE) and the paper's Methods section.
+
+The test files store the item stems but not the text of the response options. The options shown in Table F1 of the paper come from the test instrument; the notebook checks the stems and keyed answers of those items against the data.
