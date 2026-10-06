@@ -1,0 +1,7 @@
+﻿Demand,Origin,Position,Content,Keyed answer,Stem
+Low,Bank,1,Addition and subtraction operations,b,Solve 65217 + 26123
+Low,AI-generated,2,Addition and subtraction operations,a,Solve 45 + 27
+Medium,Bank,13,Multiplicative problems,b,There are 30 students in a class. The ratio of boys to girls in the class is 2 to 3. How many boys are in the class?
+Medium,AI-generated,14,Multiplicative problems,b,A bicycle costs 120 dollars and there is a 25% discount. What is the discounted price?
+High,Bank,21,Multiplicative problems,b,A represents the number of magazines Lina reads each week. Which of these expressions represents the total number of magazines she reads in 6 weeks?
+High,AI-generated,22,Multiplicative problems,b,"In a basket there are apples and oranges in the ratio 3:5. If there are 64 pieces in total, how many are oranges?"

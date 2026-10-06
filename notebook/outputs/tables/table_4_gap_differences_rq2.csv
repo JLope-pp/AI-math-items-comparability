@@ -1,0 +1,4 @@
+﻿Comparison,Difference in AI–Bank gaps (pp),SE (pp),95% CI (pp),p-value
+Medium vs Low,+9.5,2.7,"[4.2, 14.8]",<0.001
+High vs Low,-9.9,2.9,"[-15.5, -4.3]",<0.001
+High vs Medium,-19.4,3.1,"[-25.4, -13.4]",<0.001

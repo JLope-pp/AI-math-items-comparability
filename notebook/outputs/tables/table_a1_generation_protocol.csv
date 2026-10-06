@@ -1,0 +1,12 @@
+﻿Component,Specification
+Reference source,Mathematics item bank built from prior educational studies and released national and international assessments
+Contextual input,A random subset of 20 reference items from the bank for each generation call
+Language models,"GPT-5-Nano, Gemini-2.5-Pro, DeepSeek-Chat, and Qwen3-Max"
+Cognitive-demand targets,"Low, medium, and high"
+Generation target,10 items per model and cognitive-demand level (120 items in total)
+Required output,"Item stem, four response options, and identification of the keyed correct answer"
+Generation-stage similarity control,Comparison with the reference bank using vector embeddings; items with cosine similarity above 0.90 were regenerated
+Technical review,"Keyed-answer correctness, content alignment, cognitive-demand alignment, and distractor quality"
+Empirical review,Pilot administration with students and psychometric analyses
+Traceability fields,"Item identifier, model, intended cognitive demand, mathematical content, keyed answer, review indicators, and psychometric results"
+Implementation,Django frontend and administrative backend; FastAPI microservices; LangGraph for agent orchestration; Sympy and LangChain Tools for symbolic computation; PostgreSQL with pgvector for embedding storage and similarity search; Docker for deployment
