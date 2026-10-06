@@ -1,0 +1,6 @@
+﻿Criterion,Operational definition,Coding rule
+Keyed-answer correctness,The option identified as correct solves the item accurately and unambiguously.,1 = correct; 0 = incorrect or ambiguous
+Content alignment,The item assesses the intended mathematical content or curricular objective.,1 = aligned; 0 = not aligned
+Cognitive-demand alignment,The demand identified during review matches the level requested during generation.,1 = aligned; 0 = not aligned
+Distractor quality,"Incorrect options represent plausible errors, incomplete procedures, or partial conceptions.",1 = adequate; 0 = inadequate
+Integrated technical adequacy,The item meets the four preceding criteria simultaneously.,1 = meets all; 0 = fails at least one

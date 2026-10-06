@@ -1,0 +1,5 @@
+﻿Language model,n,Keyed-answer correctness (%),Content alignment (%),Cognitive-demand alignment (%),Adequate distractors (%),Integrated adequacy (%)
+DeepSeek-Chat,30,90.0,100.0,76.7,66.7,46.7
+Gemini-2.5-Pro,30,96.7,100.0,56.7,70.0,43.3
+GPT-5-Nano,30,100.0,100.0,56.7,70.0,40.0
+Qwen3-Max,30,96.7,100.0,63.3,83.3,53.3

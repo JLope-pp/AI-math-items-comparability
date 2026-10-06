@@ -15,7 +15,10 @@ This repository contains the anonymized data and the code needed to reproduce th
 │   ├── item_bank_expert_review.xlsx
 │   └── CODEBOOK.md
 └── notebook/
-    └── paper_replication.ipynb
+    ├── paper_replication.ipynb
+    └── outputs/
+        ├── tables/     Tables of the paper (CSV) and paper_tables.xlsx
+        └── figures/    Figures 1 to 4 (PNG)
 ```
 
 ## Data
@@ -46,7 +49,7 @@ The notebook follows the paper section by section and uses the same numbering.
 | 5.7 Secondary psychometric analyses | Tables 5 to 8, Figures 3 and 4 |
 | Appendices A to F | Tables A1, B1, C1, D1, E1, E2 and F1 |
 
-Tables are saved as CSV files and figures as PNG files in notebook/outputs.
+The results are already included in notebook/outputs, so they can be consulted without running anything. Each table is saved as a CSV file with the same columns and formatting as in the paper (for example, table_3_predicted_probabilities_rq1.csv), and paper_tables.xlsx contains all of them, one sheet per table. The folder also has the full output of the probit model (probit_model_output.txt), every predicted probability and contrast with its standard error and confidence interval (probit_contrasts.csv), the robustness checks (probit_robustness.csv), and item-level files such as the distractor analysis by item and the IRT parameters. Running the notebook again overwrites these files with identical results.
 
 The main model is a probit regression of correct responses on item origin, intended cognitive demand and their interaction, controlling for the student's score on the other bank items, with standard errors clustered by student. In Stata it corresponds to:
 
