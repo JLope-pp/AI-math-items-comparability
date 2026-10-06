@@ -1,66 +1,85 @@
 # Scaling Standardized Mathematics Item Generation with Generative AI
 
-Public, reproducible companion to the paper of the same title.
+Fernando Alarcon, Juan Leon, Pablo Zoido, Magdalena Barros and Jorge Lopez
 
-## Contents
+This repository contains the anonymized data and the code needed to reproduce the results of the paper. The study generated 120 mathematics items with four language models (GPT-5-Nano, Gemini-2.5-Pro, DeepSeek-Chat and Qwen3-Max), reviewed all of them, and administered 45 of them together with 45 items from an established item bank to 209 students in six public schools in Metropolitan Lima, Peru, in February 2026.
+
+## Repository structure
 
 ```text
-paper_ia_items_matematica_github/
-├── data/                 Anonymized pilot data, fully in English
+├── data/
+│   ├── questionnaire_anonymized.csv
+│   ├── test_1_anonymized.csv
+│   ├── test_2_anonymized.csv
+│   ├── test_3_anonymized.csv
+│   ├── item_bank_expert_review.xlsx
+│   └── CODEBOOK.md
 └── notebook/
-    └── paper_replication.ipynb   Every table and figure in the Results section and the appendices
+    └── paper_replication.ipynb
 ```
 
-## Data (`data/`)
+## Data
 
-All files are anonymized and translated to English. The pilot involved 209 students in six public schools in Metropolitan Lima (February 2026). In this data:
+| File | Content |
+|---|---|
+| questionnaire_anonymized.csv | Student questionnaire: sex and background questions |
+| test_1_anonymized.csv, test_2_anonymized.csv, test_3_anonymized.csv | Responses to the three test forms. Each form has 30 items, 15 from the item bank and 15 generated with AI |
+| item_bank_expert_review.xlsx | Item bank and review of the 120 AI-generated items by a specialist and six teachers |
+| CODEBOOK.md | Description of every column and code |
 
-- Each student is identified only by `student_id` (e.g. `EST0001`), consistent across all four student-level files. There are no names, no birthdates, no national ID numbers.
-- Each school is identified only by `school_id` (`Colegio_1`...`Colegio_6`). Real school names are not included.
-- `questionnaire_anonymized.csv`: student questionnaire (sex, background questions).
-- `test_1_anonymized.csv`, `test_2_anonymized.csv`, `test_3_anonymized.csv`: item-level responses to the three test forms (30 items each: 15 from the item bank, 15 AI-generated).
-- `item_bank_expert_review.xlsx`: the item bank plus the specialist and teacher technical review of all 120 AI-generated items. Reviewer identity is a numeric code (1-6), not a name.
+Students are identified by an anonymous code (EST0001, EST0002, ...) that is the same in all files, and schools by Colegio_1 to Colegio_6. The files contain no names, birthdates or ID numbers. Reviewers are identified by a number from 1 to 6.
 
-See **`data/CODEBOOK.md`** for the full column-by-column dictionary, including what each questionnaire code (`p1`...`p13h`) means.
+The pilot was administered in Spanish. The item stems and text fields were translated into English for this repository, keeping every number, operation and unit as in the original.
 
-The math item stems (`question_text_{N}` in the test files) were translated from the original Spanish pilot instrument to English, preserving every number, operation, unit, and quantity exactly. Only the wording changed. A couple of fields (`item_type_code`, `content_topic`) are kept as their original numeric or letter codes, since no text label for them exists in the codebook.
+## What the notebook reproduces
 
-## Notebook (`notebook/paper_replication.ipynb`)
+The notebook follows the paper section by section and uses the same numbering.
 
-One notebook, reading only from `../data/`, that follows the paper section by section and uses the same numbering:
+| Paper section | Results |
+|---|---|
+| 5.1 Technical quality of the AI-generated items | Table 1 and the teacher review |
+| 5.2 Main empirical comparison | Figure 1 |
+| 5.3 Probit regression | Table 2 |
+| 5.4 Differences within each demand level (RQ1) | Table 3 |
+| 5.5 Variation of the difference across levels (RQ2) | Table 4 |
+| 5.6 Differences across levels within AI-generated items (RQ3) | Figure 2 and robustness checks |
+| 5.7 Secondary psychometric analyses | Tables 5 to 8, Figures 3 and 4 |
+| Appendices A to F | Tables A1, B1, C1, D1, E1, E2 and F1 |
 
-- **5.1** Table 1, technical quality of the 120 AI-generated items by intended cognitive demand, and the teacher review
-- **5.2** Figure 1, observed proportion of correct responses by item origin and intended demand
-- **5.3** Table 2, probit estimates for the probability of a correct response, controlling for the student's score on the bank items other than the target item (`RestBankScore`), with standard errors clustered by student
-- **5.4** Table 3, average predicted probabilities and AI-bank differences within each demand level (RQ1)
-- **5.5** Table 4, differences between AI-bank gaps across demand levels (RQ2)
-- **5.6** Figure 2, predicted probabilities for AI-generated items across demand levels (RQ3), an independent check of every predicted probability and contrast with the `marginaleffects` package, and the robustness checks (standard errors clustered by student and item, the control score as a proportion, and test-form fixed effects)
-- **5.7.1** Table 5, item-rest correlations
-- **5.7.2** Table 6, Cronbach's alpha and McDonald's omega of each test form
-- **5.7.3** Table 7, empirical distractor functioning
-- **5.7.4** Table 8, exploratory sex-related differential performance
-- **5.7.5** Figures 3 and 4, item characteristic curves and test information from a one-parameter IRT model estimated with all 30 items of each form
-- **Appendices A to F**: Tables A1, B1, C1, D1, E1, E2 and F1
+Tables are saved as CSV files and figures as PNG files in notebook/outputs.
 
-The probit model is equivalent to Stata's `probit correct c.RestBankScore i.AI##i.demand, vce(cluster student_id)` followed by `margins AI#demand` and `lincom`. Each table is written to `notebook/outputs/tables/` and each figure to `notebook/outputs/figures/` when the notebook runs.
+The main model is a probit regression of correct responses on item origin, intended cognitive demand and their interaction, controlling for the student's score on the other bank items, with standard errors clustered by student. In Stata it corresponds to:
+
+```stata
+probit correct c.RestBankScore i.AI##i.demand, vce(cluster student_id)
+margins AI#demand
+```
 
 ## How to run it
 
-```bash
-pip install pandas numpy matplotlib scipy statsmodels openpyxl
-pip install factor_analyzer          # Table 6 (McDonald's omega)
-pip install sentence-transformers    # Table D1
-pip install bert-score               # Table D1
-pip install marginaleffects          # optional, independent check in Section 5.6
+1. Install the Python packages:
 
-jupyter notebook notebook/paper_replication.ipynb
-```
+   ```bash
+   pip install pandas numpy matplotlib scipy statsmodels openpyxl factor_analyzer
+   pip install sentence-transformers bert-score marginaleffects
+   ```
 
-The notebook runs in under a minute, except Table D1, which downloads a multilingual sentence-embedding model and a multilingual BERT model the first time it runs.
+2. Open the notebook and run all cells:
+
+   ```bash
+   jupyter notebook notebook/paper_replication.ipynb
+   ```
+
+The notebook takes about a minute. The first run takes longer because Table D1 downloads two multilingual language models.
 
 ## Notes
 
-- **Intended demand in Tables 1 and C1.** Each language model generated 30 items with consecutive identifiers, in three blocks of 10 (high, medium and low intended demand). The notebook takes the intended level of each item from its generation block, which gives 40 items per level. Three items (229, 256 and 260) have a review-form code that differs from their block.
-- **Table D1.** Semantic similarity is computed on the English item stems in this repository, while the paper's values were computed on the original Spanish stems. The number of items compared is the same, and the similarity values differ slightly.
-- **Table A1.** Three rows describe settings of the Eval-IA generation tool that are not stored in the data: the 20 reference items used as generation context, the 0.90 similarity threshold, and the software implementation. They come from Eval-IA's technical report (AISIDE) and the paper's Methods section.
-- **Table F1.** The test files store the item stems but not the text of the response options. The notebook checks the stems and keyed answers of the illustrative items against the data; the options shown in the paper come from the test instrument.
+Each language model generated 30 items with consecutive identifiers, in three blocks of 10 (high, medium and low demand). The notebook takes the intended demand of each item from its block, which gives 40 items per level in Tables 1 and C1.
+
+Table D1 is computed on the English stems, while the paper used the original Spanish text, so its similarity values differ slightly from the published ones.
+
+Three rows of Table A1 describe settings of the Eval-IA generation tool that are not stored in the data: the 20 reference items given to the models as context, the 0.90 similarity threshold and the software used. The test files do not include the text of the response options, so the options shown in Table F1 come from the test instrument.
+
+## Citation
+
+Alarcon, F., Leon, J., Zoido, P., Barros, M., & Lopez, J. (2026). *Scaling standardized mathematics item generation with generative AI*.
