@@ -1,7 +1,19 @@
-﻿Demand,Origin,Position,Content,Keyed answer,Stem
-Low,Bank,1,Addition and subtraction operations,b,Solve 65217 + 26123
-Low,AI-generated,2,Addition and subtraction operations,a,Solve 45 + 27
-Medium,Bank,13,Multiplicative problems,b,There are 30 students in a class. The ratio of boys to girls in the class is 2 to 3. How many boys are in the class?
-Medium,AI-generated,14,Multiplicative problems,b,A bicycle costs 120 dollars and there is a 25% discount. What is the discounted price?
-High,Bank,21,Multiplicative problems,b,A represents the number of magazines Lina reads each week. Which of these expressions represents the total number of magazines she reads in 6 weeks?
-High,AI-generated,22,Multiplicative problems,b,"In a basket there are apples and oranges in the ratio 3:5. If there are 64 pieces in total, how many are oranges?"
+﻿Test,Demand,Origin,Position,Content,Keyed answer,Correct responses (%),Stem,Options
+1,Low,Bank,1,Addition and subtraction operations,b,92,Solve 65217 + 26123,a) 39094 | b) 91340* | c) 81330 | d) 91330
+1,Low,AI-generated,2,Addition and subtraction operations,a,90,Solve 45 + 27,a) 72* | b) 62 | c) 78 | d) 53
+1,Medium,Bank,13,Multiplicative problems,b,38,There are 30 students in a class. The ratio of boys to girls in the class is 2 to 3. How many boys are in the class?,a) 6 | b) 12* | c) 18 | d) 20
+1,Medium,AI-generated,14,Multiplicative problems,b,58,A bicycle costs 120 dollars and there is a 25% discount. What is the discounted price?,a) 105 | b) 90* | c) 120 | d) 150
+1,High,Bank,21,Multiplicative problems,b,33,A represents the number of magazines Lina reads each week. Which of these expressions represents the total number of magazines she reads in 6 weeks?,a) 6 + A | b) 6 × A* | c) A + 6 | d) (A + A) × 6
+1,High,AI-generated,22,Multiplicative problems,b,19,"In a basket there are apples and oranges in the ratio 3:5. If there are 64 pieces in total, how many are oranges?",a) 24 | b) 40* | c) 32 | d) 48
+2,Low,Bank,3,Addition and subtraction operations,a,84,Solve 72 - 25,a) 47* | b) 57 | c) 87 | d) 97
+2,Low,AI-generated,2,Addition and subtraction operations,b,86,Solve 126 - 58,a) 58 | b) 68* | c) 76 | d) 66
+2,Medium,Bank,15,Multiplicative problems,c,52,"In a garden there are 14 columns of plants and each column has 20 plants. Then, a gardener plants 6 more columns and each column has 20 plants. How many plants are there in total in the garden now?",a) 280 | b) 300 | c) 400* | d) 500
+2,Medium,AI-generated,16,Multiplicative problems,c,62,"In a bag there are 48 candies. If they are shared among 6 children, how many candies does each one receive?",a) 6 | b) 7 | c) 8* | d) 9
+2,High,Bank,23,Multiplicative problems,a,71,It takes Chris 4 minutes to wash one window. He wants to know how many minutes it will take him to wash 8 windows at that same rate. He should:,a) multiply 4 × 8* | b) divide 8 by 4 | c) subtract 4 from 8 | d) add 8 and 4
+2,High,AI-generated,22,Multiplicative problems,a,26,"A fair gives away balloons in the ratio 4:1:2 for the colors red, green, and blue. If 70 balloons are given away in total, how many are green?",a) 10* | b) 40 | c) 14 | d) 60
+3,Low,Bank,7,Addition and subtraction operations,a,63,Solve: 65827 + 63503 - 100298,a) 29032* | b) 29168 | c) 102623 | d) 129330
+3,Low,AI-generated,8,Addition and subtraction operations,a,81,Solve 87 - 29,a) 58* | b) 57 | c) 68 | d) 97
+3,Medium,Bank,13,Multiplicative problems,b,25,"An alloy is made of gold and silver in the ratio of 1 gram of gold per 4 grams of silver. What is the weight, in grams, of the silver in 40 grams of this alloy?",a) 8 | b) 32* | c) 10 | d) 30
+3,Medium,AI-generated,12,Multiplicative problems,b,76,In a library there are 7 shelves and each shelf has 8 books. How many books are there in total?,a) 54 | b) 56* | c) 64 | d) 48
+3,High,Bank,25,Multiplicative problems,c,46,Mark's garden has 84 rows of cabbages. There are 57 cabbages in each row. What is the best way to estimate the total?,a) 100 × 50 = 5000 | b) 90 × 60 = 5400 | c) 80 × 60 = 4800* | d) 80 × 50 = 4000
+3,High,AI-generated,26,Multiplicative problems,b,40,"On a shelf, the colors of the trays repeat in the order red, green, blue. If the trays are numbered starting from 1, what color is tray number 53?",a) red | b) green* | c) blue | d) yellow
